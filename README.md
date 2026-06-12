@@ -125,7 +125,6 @@ agenttemp workflow signup --wait-type otp --json | jq '.wait.result.value'
 
 ## Resources
 
-- [Main App](https://github.com/kunalgawade19042002-gif/tempmail)
 - [Node.js SDK](https://github.com/kunalgawade19042002-gif/agenttemp-node)
 - [Python SDK](https://github.com/kunalgawade19042002-gif/agenttemp-python)
 - [MCP Server](https://github.com/kunalgawade19042002-gif/agenttemp-mcp)
