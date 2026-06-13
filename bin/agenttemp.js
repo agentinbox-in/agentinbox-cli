@@ -9,7 +9,7 @@ const path = require('path');
 
 const program = new Command();
 
-const BASE_URL = process.env.AGENTTEMP_BASE_URL || 'https://tempmailai.vercel.app/api/v1';
+const BASE_URL = process.env.AGENTTEMP_BASE_URL || 'https://agentinbox.in/api/v1';
 
 function getApiKey(cmdOptions) {
   const key = cmdOptions.apiKey || process.env.AGENTTEMP_API_KEY;
