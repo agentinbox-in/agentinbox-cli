@@ -125,9 +125,9 @@ agenttemp workflow signup --wait-type otp --json | jq '.wait.result.value'
 
 ## Resources
 
-- [Node.js SDK](https://github.com/agentinbox-in/agenttemp-node)
-- [Python SDK](https://github.com/agentinbox-in/agenttemp-python)
-- [MCP Server](https://github.com/agentinbox-in/agenttemp-mcp)
+- [Node.js SDK](https://github.com/agentinbox-in/agentinbox-node)
+- [Python SDK](https://github.com/agentinbox-in/agentinbox-python)
+- [MCP Server](https://github.com/agentinbox-in/agentinbox-mcp)
 
 ## License
 
