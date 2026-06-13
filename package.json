@@ -22,10 +22,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AgentTemp-io/agenttemp-cli"
+    "url": "https://github.com/agentinbox-in/agenttemp-cli"
   },
   "bugs": {
-    "url": "https://github.com/AgentTemp-io/agenttemp-cli/issues"
+    "url": "https://github.com/agentinbox-in/agenttemp-cli/issues"
   },
   "homepage": "https://agentinbox.in",
   "dependencies": {
