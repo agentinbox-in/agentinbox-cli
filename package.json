@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/kunalgawade19042002-gif/agenttemp-cli/issues"
   },
-  "homepage": "https://tempmailai.vercel.app",
+  "homepage": "https://agentinbox.in",
   "dependencies": {
     "commander": "^11.0.0",
     "chalk": "^4.1.2",
