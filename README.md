@@ -1,13 +1,13 @@
-# AgentTemp CLI
+# AgentInbox CLI
 
-Command-line tool for AgentTemp - Email verification from the terminal.
+Command-line tool for AgentInbox - Email verification from the terminal.
 
 ## Installation
 
 ```bash
-npm install -g agenttemp-cli
+npm install -g agentinbox-cli
 # or
-npx agenttemp-cli
+npx agentinbox-cli
 ```
 
 ## Setup
@@ -15,13 +15,13 @@ npx agenttemp-cli
 Set your API key as an environment variable:
 
 ```bash
-export AGENTTEMP_API_KEY="at_live_..."
+export AGENTINBOX_API_KEY="at_live_..."
 ```
 
 Or pass it with each command:
 
 ```bash
-agenttemp --api-key at_live_... inbox create
+agentinbox --api-key at_live_... inbox create
 ```
 
 ## Commands
@@ -30,79 +30,79 @@ agenttemp --api-key at_live_... inbox create
 
 ```bash
 # Create a new inbox
-agenttemp inbox create
-agenttemp inbox create --ttl 3600 --purpose "Test signup"
+agentinbox inbox create
+agentinbox inbox create --ttl 3600 --purpose "Test signup"
 
 # List all inboxes
-agenttemp inbox list
+agentinbox inbox list
 
 # Get inbox details
-agenttemp inbox get <inbox-id>
+agentinbox inbox get <inbox-id>
 
 # Delete an inbox
-agenttemp inbox delete <inbox-id>
+agentinbox inbox delete <inbox-id>
 ```
 
 ### Wait Operations
 
 ```bash
 # Wait for an OTP
-agenttemp wait otp <inbox-id>
-agenttemp wait otp <inbox-id> --timeout 120
+agentinbox wait otp <inbox-id>
+agentinbox wait otp <inbox-id> --timeout 120
 
 # Wait for a magic link
-agenttemp wait magic-link <inbox-id>
+agentinbox wait magic-link <inbox-id>
 
 # Wait for a password reset link
-agenttemp wait password-reset <inbox-id>
+agentinbox wait password-reset <inbox-id>
 
 # Check wait status
-agenttemp wait check <wait-id>
+agentinbox wait check <wait-id>
 ```
 
 ### Messages
 
 ```bash
 # List messages in an inbox
-agenttemp message list <inbox-id>
+agentinbox message list <inbox-id>
 
 # Get a specific message
-agenttemp message get <message-id>
+agentinbox message get <message-id>
 
 # Extract data from message
-agenttemp message extract <message-id>
+agentinbox message extract <message-id>
 ```
 
 ### Sessions
 
 ```bash
 # Create a session
-agenttemp session create "Test Session"
+agentinbox session create "Test Session"
 
 # List sessions
-agenttemp session list
+agentinbox session list
 
 # Get session with timeline
-agenttemp session get <session-id> --include timeline
+agentinbox session get <session-id> --include timeline
 
 # Complete a session
-agenttemp session complete <session-id>
+agentinbox session complete <session-id>
 ```
 
 ### Workflows
 
 ```bash
 # Create inbox + wait in one command
-agenttemp workflow signup --wait-type otp
+agentinbox workflow signup --wait-type otp
 
 # Quick email receive
-agenttemp workflow email
+agentinbox workflow email
 ```
 
 ## Global Options
 
 ```bash
---api-key, -k      API key (or use AGENTTEMP_API_KEY env var)
+--api-key, -k      API key (or use AGENTINBOX_API_KEY env var)
 --base-url, -u     Custom API base URL
 --json, -j         Output raw JSON
 --verbose, -v      Verbose output
@@ -112,15 +112,15 @@ agenttemp workflow email
 
 ```bash
 # Quick OTP test
-export AGENTTEMP_API_KEY="at_live_..."
-INBOX=$(agenttemp inbox create --json | jq -r '.id')
-echo "Email: $(agenttemp inbox get $INBOX --json | jq -r '.email_address')"
+export AGENTINBOX_API_KEY="at_live_..."
+INBOX=$(agentinbox inbox create --json | jq -r '.id')
+echo "Email: $(agentinbox inbox get $INBOX --json | jq -r '.email_address')"
 # ... use email in signup form ...
-OTP=$(agenttemp wait otp $INBOX --timeout 120 --json | jq -r '.result.value')
+OTP=$(agentinbox wait otp $INBOX --timeout 120 --json | jq -r '.result.value')
 echo "OTP: $OTP"
 
 # Full workflow
-agenttemp workflow signup --wait-type otp --json | jq '.wait.result.value'
+agentinbox workflow signup --wait-type otp --json | jq '.wait.result.value'
 ```
 
 ## Resources

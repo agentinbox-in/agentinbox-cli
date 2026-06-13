@@ -1,24 +1,24 @@
 {
-  "name": "agenttemp-cli",
+  "name": "agentinbox-cli",
   "version": "0.1.0",
-  "description": "CLI tool for AgentTemp - Email verification from the command line",
+  "description": "CLI tool for AgentInbox - Email verification from the command line",
   "main": "index.js",
   "bin": {
-    "agenttemp": "./bin/agenttemp.js",
-    "at": "./bin/agenttemp.js"
+    "agentinbox": "./bin/agentinbox.js",
+    "at": "./bin/agentinbox.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "agenttemp",
+    "agentinbox",
     "tempmail",
     "email",
     "verification",
     "cli",
     "command-line"
   ],
-  "author": "AgentTemp",
+  "author": "AgentInbox",
   "license": "MIT",
   "repository": {
     "type": "git",

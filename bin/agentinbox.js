@@ -9,12 +9,12 @@ const path = require('path');
 
 const program = new Command();
 
-const BASE_URL = process.env.AGENTTEMP_BASE_URL || 'https://agentinbox.in/api/v1';
+const BASE_URL = process.env.AGENTINBOX_BASE_URL || 'https://agentinbox.in/api/v1';
 
 function getApiKey(cmdOptions) {
-  const key = cmdOptions.apiKey || process.env.AGENTTEMP_API_KEY;
+  const key = cmdOptions.apiKey || process.env.AGENTINBOX_API_KEY;
   if (!key) {
-    console.error(chalk.red('Error: API key required. Use --api-key or set AGENTTEMP_API_KEY env var.'));
+    console.error(chalk.red('Error: API key required. Use --api-key or set AGENTINBOX_API_KEY env var.'));
     process.exit(1);
   }
   return key;
@@ -49,10 +49,10 @@ function output(data, cmdOptions) {
 }
 
 program
-  .name('agenttemp')
-  .description('CLI for AgentTemp email verification')
+  .name('agentinbox')
+  .description('CLI for AgentInbox email verification')
   .version('0.1.0')
-  .option('-k, --api-key <key>', 'API key (or use AGENTTEMP_API_KEY env var)')
+  .option('-k, --api-key <key>', 'API key (or use AGENTINBOX_API_KEY env var)')
   .option('-u, --base-url <url>', 'Custom API base URL')
   .option('-j, --json', 'Output raw JSON')
   .option('-v, --verbose', 'Verbose output');
