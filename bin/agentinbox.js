@@ -21,7 +21,8 @@ function getApiKey(cmdOptions) {
 }
 
 async function apiRequest(method, path, body, apiKey) {
-  const url = `${BASE_URL}${path}`;
+  const baseUrl = (program.opts().baseUrl || BASE_URL).replace(/\/$/, '');
+  const url = `${baseUrl}${path}`;
   const options = {
     method,
     headers: {
@@ -232,7 +233,7 @@ message.command('extract <id>')
   .description('Extract data from message')
   .action(async (id, cmdOptions, command) => {
     const apiKey = getApiKey(command.parent.parent.opts());
-    const data = await apiRequest('GET', `/messages/${id}/extract`, null, apiKey);
+    const data = await apiRequest('POST', `/messages/${id}/extract`, null, apiKey);
     output(data, command.parent.parent.opts());
   });
 
