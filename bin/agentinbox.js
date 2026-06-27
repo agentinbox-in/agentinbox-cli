@@ -49,6 +49,10 @@ function output(data, cmdOptions) {
   }
 }
 
+function field(object, camelName, snakeName) {
+  return object?.[camelName] ?? object?.[snakeName];
+}
+
 program
   .name('agentinbox')
   .description('CLI for AgentInbox email verification')
@@ -79,9 +83,9 @@ inbox.command('create')
       if (command.parent.parent.opts().json) {
         console.log(JSON.stringify(data, null, 2));
       } else {
-        console.log(chalk.green(`Email: ${data.email_address}`));
+        console.log(chalk.green(`Email: ${field(data, 'emailAddress', 'email_address')}`));
         console.log(chalk.gray(`ID: ${data.id}`));
-        console.log(chalk.gray(`Expires: ${data.expires_at}`));
+        console.log(chalk.gray(`Expires: ${field(data, 'expiresAt', 'expires_at')}`));
       }
     } catch (e) {
       spinner.fail(e.message);
@@ -102,7 +106,7 @@ inbox.command('list')
       } else {
         data.data.forEach(inbox => {
           const status = inbox.status === 'active' ? chalk.green('●') : chalk.gray('●');
-          console.log(`${status} ${inbox.email_address} ${chalk.gray(inbox.id)}`);
+          console.log(`${status} ${field(inbox, 'emailAddress', 'email_address')} ${chalk.gray(inbox.id)}`);
         });
       }
     } catch (e) {
@@ -296,7 +300,7 @@ workflow.command('create-inbox-and-wait')
       }, apiKey);
       spinner.succeed('Workflow created!');
       if (!command.parent.parent.opts().json) {
-        console.log(chalk.green(`Email: ${data.inbox.email_address}`));
+        console.log(chalk.green(`Email: ${field(data.inbox, 'emailAddress', 'email_address')}`));
         console.log(chalk.gray(`Inbox ID: ${data.inbox.id}`));
         console.log(chalk.gray(`Wait ID: ${data.wait.id}`));
       }
@@ -320,7 +324,7 @@ workflow.command('signup')
       }, apiKey);
       spinner.succeed('Signup workflow ready!');
       if (!command.parent.parent.opts().json) {
-        console.log(chalk.green(`Email: ${data.inbox.email_address}`));
+        console.log(chalk.green(`Email: ${field(data.inbox, 'emailAddress', 'email_address')}`));
         console.log(chalk.gray(`Inbox ID: ${data.inbox.id}`));
       }
       output(data, command.parent.parent.opts());

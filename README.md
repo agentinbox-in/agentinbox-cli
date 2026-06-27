@@ -114,7 +114,7 @@ agentinbox workflow email
 # Quick OTP test
 export AGENTINBOX_API_KEY="at_live_..."
 INBOX=$(agentinbox inbox create --json | jq -r '.id')
-echo "Email: $(agentinbox inbox get $INBOX --json | jq -r '.email_address')"
+echo "Email: $(agentinbox inbox get $INBOX --json | jq -r '.emailAddress')"
 # ... use email in signup form ...
 OTP=$(agentinbox wait otp $INBOX --timeout 120 --json | jq -r '.result.value')
 echo "OTP: $OTP"
